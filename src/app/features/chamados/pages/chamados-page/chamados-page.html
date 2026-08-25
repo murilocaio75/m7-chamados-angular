@@ -1,0 +1,28 @@
+<main class="container">
+  <h1>Chamados técnicos</h1>
+
+  <button
+    type="button"
+    class="botao-criar"
+    (click)="alternarFormulario()"
+  >
+    {{ mostrarFormulario() ? "Cancelar" : "Criar chamado" }}
+  </button>
+
+  @if (mostrarFormulario()) {
+    <app-novo-chamado-form (criar)="adicionarChamado($event)" />
+  }
+
+  <app-filtro-chamados
+    [pesquisa]="pesquisa()"
+    [status]="filtroStatus()"
+    (pesquisaChange)="atualizarPesquisa($event)"
+    (statusChange)="atualizarStatus($event)"
+  />
+
+  <app-lista-chamados
+    [chamados]="chamadosFiltrados()"
+    [carregando]="carregando()"
+    [erro]="erro()"
+  />
+</main>

@@ -1,0 +1,58 @@
+<form class="form-chamado" (submit)="enviar($event)">
+  <h2>Novo chamado</h2>
+
+  <label>
+    Título
+    <input
+      type="text"
+      [value]="titulo()"
+      (input)="alterarTitulo($event)"
+    />
+  </label>
+
+  <label>
+    Descrição
+    <textarea
+      rows="3"
+      [value]="descricao()"
+      (input)="alterarDescricao($event)"
+    ></textarea>
+  </label>
+
+  <label>
+    Prioridade
+    <select
+      [value]="prioridade()"
+      (change)="alterarPrioridade($event)"
+    >
+      <option value="baixa">Baixa</option>
+      <option value="media">Média</option>
+      <option value="alta">Alta</option>
+    </select>
+  </label>
+
+  <label>
+    Status
+    <select
+      [value]="status()"
+      (change)="alterarStatus($event)"
+    >
+      <option value="aberto">Aberto</option>
+      <option value="em_andamento">Em andamento</option>
+      <option value="concluido">Concluído</option>
+    </select>
+  </label>
+
+  <label>
+    Responsável
+    <input
+      type="text"
+      [value]="responsavel()"
+      (input)="alterarResponsavel($event)"
+    />
+  </label>
+
+  <button type="submit" [disabled]="!formValido()">
+    Salvar chamado
+  </button>
+</form>
